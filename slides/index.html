@@ -103,64 +103,28 @@
           <li class="fragment">Empowering non-devlopers to create apps</li>
         </ul>
       </li>
-      <li class="fragment">Not the best for:
+      <li class="fragment">Other frameworks/templates might be better for:
         <ul>
           <li class="fragment">Narrowly focussed apps, especially mobile first</li>
-          <li class="fragment">Large, complex custom apps</li>
+          <li class="fragment">Large, complex custom apps with specialized workflows</li>
           <li class="fragment">When there is a template that does <em>almost all</em> of app functionality</li>
         </ul>
       </li>
     </ul>
   </section>
   <section>
-    <h2>Web AppBuilder Challenges &amp; Techniques</h2>
-    <ul>
-      <li class="fragment" data-fragment-index="1">Challenges:
-        <ul>
-          <li class="fragment">It's new</li>
-          <li class="fragment">Tight coupling with Portal</li>
-          <li class="fragment">Integration with source control (TFS, git)</li>
-          <li class="fragment">Working with other libraries</li>
-        </ul>
-      </li>
-      <li class="fragment" data-fragment-index="1">Techniques and Tools:
-        <ul>
-          <li class="fragment">Scaffolding out boilerplate files</li>
-          <li class="fragment">Creating widgets that can be used outside the WAB</li>
-          <li class="fragment">Testing your code</li>
-          <li class="fragment">Using "Jimu" (WAB) code</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-  <section class="stack">
-    <section>
-      <h2>Where Can I Get Help?</h2>
-      <figure>
-        <img src="images/frustrated.jpg" />
-        <figcaption><small><a href="https://www.flickr.com/photos/62772618@N08/5752030779"><i class="fa fa-flickr"></i> 62772618@N08</a></small></figcaption>
-      </figure>
-    </section>
-    <section>
-      <h3>Resuorces</h3>
-      <p>Here are some resources to get you started:</p>
+    <h2>Web AppBuilder Techniques and Tools</h2>
+      <p class="fragment" data-fragment-index="1">Techniques and Tools to help you:</p>
       <ul>
-        <li class="fragment">Videos:
-          <ul><li>Intro: <a href="http://video.esri.com/watch/3848/arcgis-webapp-builder-an-introduction">UC 2014</a> - <a href="http://video.esri.com/watch/3306/intro-web-appbuilder-for-arcgis_dash_javascript-apps-made-easy">DevSummit 2014</a></li><li>Customizing: <a href="http://video.esri.com/watch/3845/arcgis-webapp-builder-customizing-and-extending">UC 2014</a> - <a href="http://video.esri.com/watch/3362/customizing-and-extending-web-appbuilder-for-arcgis">DevSummit 2014</a></li></ul></li>
-        <li class="fragment">Documentaion:
-          <ul>
-          <li>Online: <a href="http://beijing.esri.com/help/webappbuilder1.0beta2">http://beijing.esri.com/help/webappbuilder1.0beta2</a></li>
-          <li>Bundled: http://localhost/path/to/arcgis-web-appbuilder-1.0beta2/docs/</li></ul></li>
-        <li class="fragment">Beta Community: <a href="http://bit.ly/WebAppBuilder">http://bit.ly/WebAppBuilder</a>
-        <li class="fragment">GeoNet:
-          <ul>
-            <li><a href="https://geonet.esri.com/community/gis/web-gis/web-appbuilder">Web AppBuilder for ArcGIS Community</a></li>
-            <li><a href="https://geonet.esri.com/groups/web-app-builder-custom-widgets">Web AppBuilder Custom Widgets</a></li>
-          </ul>
-        </li>
+        <li class="fragment">Use source control (TFS, git)</li>
+        <li class="fragment">Work with other libraries</li>
+        <li class="fragment">Scaffold out boilerplate files</li>
+        <li class="fragment">Create widgets that can be used outside the WAB</li>
+        <li class="fragment">Test your code</li>
+        <li class="fragment">Use WAB styles and widgets in your code</li>
       </ul>
-    </section>
   </section>
+  <!--
   <section class="stack">
     <section>
       <h2>Integrating with Portal</h2>
@@ -170,43 +134,18 @@
       </figure>
     </section>
     <section>
-      <h3>Webmap Not (Necessarily) Required</h3>
-      <p>Works best with a webmap, but there are workarounds:</p>
+      <h3>Adding Layers to the Map</h3>
+      <p>You'r not limited to wrking with the layers defined in the webmap</p>
       <ul>
-        <li class="fragment">Your widget can add layers to a basic (empty) webmap
+        <li class="fragment">Your widget can add / remove layers to the webmap
         <ul>
           <li>Add in <code>postCreate()</code></li>
           <li>Remove in <code>destroy()</code> (optional)</li>
         </ul></li>
-        <li class="fragment">Or add layers to <code>map</code> options in <span class="fileName">config.json</span> by hand</li>
       </ul>
     </section>
-    <section>
-      <h3>Example: <span class="fileName">sample-configs/config-layers.json</span></h3>
-      <pre><code>
-  "map": {
-    "3D": false,
-    "2D": true,
-
-    "basemaps": [{
-    "label": "base map1",
-    "url": "http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer",
-    "type": "tiled"
-    }],
-    "operationallayers": [{
-    "label": "Earthquakes",
-    "url": "http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Earthquakes/EarthquakesFromLastSevenDays/FeatureServer/0",
-    "type": "feature"
-    }],
-
-    "mapOptions": {
-    "center": [-98, 40],
-    "scale": 16937199
-    }
-  }
-      </code></pre>
-    </section>
   </section>
+  -->
   <section class="stack">
     <section>
       <h2>How do I Check in My Code?</h2>
@@ -304,17 +243,29 @@
       </ol>
       <p>See: <a href="https://github.com/tomwayson/web-appbuilder-bootstrap">https://github.com/tomwayson/web-appbuilder-bootstrap</a></p>
 <pre><code>
+    ...
+    resources = resources.concat([
+      window.apiUrl + 'dojo/resources/dojo.css',
+      window.apiUrl + 'dijit/themes/claro/claro.css',
+      window.apiUrl + 'esri/css/esri.css',
+      window.path + 'jimu.js/css/jimu.css',
+      // add a reference to the Bootstrap CSS
+      '//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'
+    ]);
+    ...
     dojoConfig = {
       ...
       packages: [{
         name: "widgets",
-        location: path + "widgets"
+        location: window.path + "widgets"
       }, {
         name: "jimu",
-        location: path + "jimu.js"
+        location: window.path + "jimu.js"
       }, {
         name: "themes",
-        location: path + "themes"
+        location: window.path + "themes"
+      }, {
+        ...
       }, {
           // add Dojo-Bootstrap if you want to use bootstrap comontents
           // like tabs, dropdowns, modals, collapses, tooltips, etc
@@ -322,17 +273,6 @@
           location: "//rawgit.com/xsokev/Dojo-Bootstrap/master"
       }]
     };
-    ...
-    resources = resources.concat([
-      path + 'libs/storejs/json.js',
-      path + 'libs/storejs/store.js',
-      apiUrl + 'js/dojo/dojo/resources/dojo.css',
-      apiUrl + 'js/dojo/dijit/themes/claro/claro.css',
-      apiUrl + 'js/esri/css/esri.css',
-      path + 'jimu.js/css/jimu.css',
-      // add a reference to the Bootstrap CSS
-      '//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'
-    ]);
 </code></pre>
     </section>
   </section>
@@ -483,6 +423,39 @@
       <h3>Demo: Using Jimu Widgets</h3>
       <img src="images/drs-drawbox-screenshot.png" />
       <!-- TODO: screenshot -->
+    </section>
+  </section>
+  <section class="stack">
+    <section>
+      <h2>Where Can I Get Help?</h2>
+      <figure>
+        <img src="images/frustrated.jpg" />
+        <figcaption><small><a href="https://www.flickr.com/photos/62772618@N08/5752030779"><i class="fa fa-flickr"></i> 62772618@N08</a></small></figcaption>
+      </figure>
+    </section>
+    <section>
+      <h3>Resuorces</h3>
+      <p>Here are some resources to get you started:</p>
+      <ul>
+        <li class="fragment">Videos:
+          <ul><li>Intro: <a href="http://video.esri.com/watch/3848/arcgis-webapp-builder-an-introduction">UC 2014</a> - <a href="http://video.esri.com/watch/3306/intro-web-appbuilder-for-arcgis_dash_javascript-apps-made-easy">DevSummit 2014</a></li><li>Customizing: <a href="http://video.esri.com/watch/3845/arcgis-webapp-builder-customizing-and-extending">UC 2014</a> - <a href="http://video.esri.com/watch/3362/customizing-and-extending-web-appbuilder-for-arcgis">DevSummit 2014</a></li></ul></li>
+        <li class="fragment">Documentaion:
+          <ul>
+          <li>Online: <a href="https://developers.arcgis.com/web-appbuilder/">Developer Edition</a></li>
+          <li>Bundled: http://localhost:3344/webappbuilder/help/</li></ul></li>
+        <li class="fragment">GeoNet:
+          <ul>
+            <li><a href="https://geonet.esri.com/community/gis/web-gis/web-appbuilder">Web AppBuilder for ArcGIS Community</a></li>
+            <li><a href="https://geonet.esri.com/groups/web-app-builder-custom-widgets">Web AppBuilder Custom Widgets</a></li>
+          </ul>
+        </li>
+        <li class="fragment">Widget Repositories:
+          <ul>
+            <li><a href="https://github.com/Esri/arcgis-webappbuilder-widgets-themes">https://github.com/Esri/arcgis-webappbuilder-widgets-themes</a></li>
+            <li><a href="https://github.com/Esri/solutions-webappbuilder-widgets">https://github.com/Esri/solutions-webappbuilder-widgets</a></li>
+          </ul>
+        </li>
+      </ul>
     </section>
   </section>
   <section>
